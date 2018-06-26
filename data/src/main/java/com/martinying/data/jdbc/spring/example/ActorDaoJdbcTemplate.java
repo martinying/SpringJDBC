@@ -1,7 +1,6 @@
 package com.martinying.data.jdbc.spring.example;
 
 import com.martinying.model.example.Actor;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -42,7 +41,7 @@ public class ActorDaoJdbcTemplate {
     Actor getActorById(int id) {
         return this.jdbcTemplate.queryForObject("select * from t_actor where id=?",
                 new Object[]{id},
-                new BeanPropertyRowMapper<>(Actor.class)
+                new ActorMapper()
         );
     }
 

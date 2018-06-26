@@ -49,7 +49,7 @@ public class ActorDaoNamedParameterJdbcTemplate {
 
         this.namedParameterJdbcTemplate.update(
                 "update t_actor set first_name = :first_name, last_name= :last_name where id = :id",
-                new BeanPropertySqlParameterSource(actor)
+                namedParameters
         );
     }
 
