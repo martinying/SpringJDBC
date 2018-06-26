@@ -7,10 +7,12 @@ import com.martinying.model.example.Actor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
@@ -19,8 +21,10 @@ import static org.junit.Assert.assertEquals;
 @SpringJUnitConfig(locations = "/dao-context.xml")
 @TestExecutionListeners({
         DependencyInjectionTestExecutionListener.class,
+        DirtiesContextTestExecutionListener.class,
         DbUnitTestExecutionListener.class
 })
+@DirtiesContext
 public class ActorDaoJdbcTemplateTest {
     @Autowired
     ActorDaoJdbcTemplate actorDaoJdbcTemplate;
